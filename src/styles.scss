@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "sfpro-l";
+  src: url(assets/fonts/SFProText-Light.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: "sfpro-r";
+  src: url(assets/fonts/SFProText-Regular.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: "sfpro-m";
+  src: url(assets/fonts/SFProText-Medium.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: "sfpro-sb";
+  src: url(assets/fonts/SFProText-Semibold.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: "sfpro-b";
+  src: url(assets/fonts/SFProText-Bold.ttf) format("opentype");
+}
+:root {
+  font-size: 62.5%;
+  --primary-bg-color: #eee;
+  --scrollClr:#f8f8f8;
+  --seconday-bg-color:#ccc;
+  --white-clr:#fff
+}
+html {
+  height: 100dvh;
+  font-family: "sfpro-r", sans-serif;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "sfpro-r", sans-serif;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--primary-bg-color) !important;
+  font-family: "SF Pro Text" !important;
+}
+
+//
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px !important;
+  background:  var(--scrollClr) !important;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--primary-bg-color) !important;
+}

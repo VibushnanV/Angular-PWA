@@ -1,0 +1,12 @@
+.loginContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+}
+.loginCard{
+  border:1px solid var(--seconday-bg-color) ;
+  min-width: 600px;
+  min-height: 500px;
+  background-color: var(--white-clr);
+}
