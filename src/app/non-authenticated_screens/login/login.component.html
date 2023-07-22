@@ -1,8 +1,115 @@
 <div class="container-fluid">
 <div class="loginContainer">
-  <div class="loginCard">
+  <div class="loginCard animate__animated animate__bounceInLeft">
+       <div class="Icon_with_text">
+        <i class="fa fa-ravelry iconStyle f-30"  aria-hidden="true"></i>
+        <div class="d-block">
+          <span class="welcome d-block f-30">Welcome Back:)</span>
+          <small class="smalNote d-block">Enter your credentials to login</small>
+        </div>
+       </div>
+       <div class="loginForm">
+        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" style="display: grid;">
+          <div class="formContainer">
+            <div class="input-group input-group-lg position-relative">
+              <input type="text" class="form-control" placeholder="Email"
+              formControlName="email">
+              <span class="input-group-text" id="basic-addon2">
+                <i class="fa fa-envelope iconStyle f-15"  aria-hidden="true"></i>
+              </span>
+              <ng-container
+              *ngIf="
+                loginForm.get('email')?.touched &&
+                loginForm.get('email')?.invalid
+              ">
+              <div
+                *ngIf="loginForm.get('email')?.errors?.['required']"
+                class="errorTextInput">
+              Email is required.
+              </div>
+              <div
+                *ngIf="loginForm.get('email')?.errors?.['email']"
+                class="errorTextInput">
+                 Invalid Email
+              </div>
+            </ng-container>
+            </div>
 
+            <div class="input-group input-group-lg position-relative">
+              <input  [type]="showPassword?'text':'password'" class="form-control" placeholder="Password"
+              formControlName="password">
+              <span class="input-group-text" id="basic-addon2">
+                <i class="iconStyle f-20" aria-hidden="true"
+                style="cursor: pointer;"
+                [ngClass]="showPassword?'fa fa-unlock-alt':'fa fa-lock'"
+                (click)="showPassword=!showPassword"></i>
+              </span>
+              <ng-container
+              *ngIf="
+                loginForm.get('password')?.touched &&
+                loginForm.get('password')?.invalid">
+              <div
+                *ngIf="loginForm.get('password')?.errors?.['required']"
+                class="errorTextInput">
+              Password  is required.
+              </div>
+              <div
+                *ngIf="loginForm.get('password')?.errors?.['minlength']"
+                class="errorTextInput">
+                Minimum
+                {{loginForm.get('password')?.errors?.['minlength'].requiredLength}}
+                Characters required
+              </div>
+              <div
+                *ngIf="loginForm.get('password')?.errors?.['maxlength']"
+                class="errorTextInput">
+                Maximum
+                {{loginForm.get('password')?.errors?.['maxlength'].requiredLength}}
+                Characters required
+              </div>
+            </ng-container>
+            </div>
+
+            <div class="tools">
+              <div class="remember">
+                <input
+                style="position: relative;
+                top: 2px; cursor: pointer;"
+                  formControlName="remember"
+                  name="remember"
+                  type="checkbox"
+                />
+                <span style="position: relative;left: 3px"
+                  >Remember me</span >
+              </div>
+              <div class="forget">
+                <span >Forgot your password? <span style="color: #2a7cf5;" class="resentlink">
+                  <a routerLink="/forget" style="cursor: pointer;">Reset Password </a></span>
+                </span>
+              </div>
+            </div>
+            <div class="submit">
+              <ng-container *ngIf="sendRequest">
+                <button class="btn loginBtn" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm "
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Loading...
+                </button>
+              </ng-container>
+              <ng-container *ngIf="!sendRequest">
+                <button  class="btn loginBtn" [disabled]="!loginForm.valid" >Log In</button>
+              </ng-container>
+            </div>
+            </div>
+        </form>
+        <div class="singUp f-14 text-center mt-4">
+          Don't have an account? <span style="color: #2a7cf5;" class="resentlink">
+            <a routerLink="/signUp" style="cursor: pointer;">Sign up</a></span>
+        </div>
+       </div>
   </div>
-
-</div>
+  </div>
 </div>

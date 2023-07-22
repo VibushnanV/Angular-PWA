@@ -1,3 +1,4 @@
+@import 'animate.css';
 /* You can add global styles to this file, and also import other style files */
 @font-face {
   font-family: "sfpro-l";
@@ -28,7 +29,9 @@
   --primary-bg-color: #eee;
   --scrollClr:#f8f8f8;
   --seconday-bg-color:#ccc;
-  --white-clr:#fff
+  --white-clr:#fff;
+  --app-primary-clr:#FF6000;
+  --app-secondary-clr:#f14837;
 }
 html {
   height: 100dvh;
@@ -59,4 +62,20 @@ body {
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background-color: var(--primary-bg-color) !important;
+}
+// utility classes
+.f-12{
+  font-size: 1.2rem !important;
+}
+.f-14{
+  font-size: 1.4rem !important;
+}
+.f-20{
+  font-size: 2rem !important;
+}
+.f-15{
+  font-size: 1.5rem !important;
+}
+.f-30{
+  font-size: 3rem !important;
 }

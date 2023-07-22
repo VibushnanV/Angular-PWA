@@ -1,1 +1,99 @@
-<p>forgot works!</p>
+<div class="container-fluid">
+  <div class="forgotContainer">
+    <div class="forgotCard">
+         <div class="Icon_with_text">
+          <i class="fa fa-question-circle iconStyle f-30"  aria-hidden="true"></i>
+          <div class="d-block">
+            <span class="welcome d-block f-20">Forgot your password?</span>
+            <small class="smalNote d-block">No worries, we'll send you a mail to reset</small>
+          </div>
+         </div>
+         <div class="forgotForm">
+          <ng-container *ngIf="!showOTPField">
+            <form [formGroup]="forgotForm" (ngSubmit)="forgot(forgotForm)" style="display: grid;">
+              <div class="formContainer">
+                <ng-container *ngFor="let form of selectedForm">
+                  <ng-container *ngIf="form.type=='email'">
+                    <div class="input-group input-group-lg">
+                      <input type="text" class="form-control" [placeholder]="form.label"
+                      [formControlName]="form.formControlName">
+                      <span class="input-group-text" id="basic-addon2">
+                        <i class="iconStyle f-15" [ngClass]="form.icon"  aria-hidden="true"></i>
+                      </span>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="form.type=='password'">
+                    <div class="input-group input-group-lg">
+                      <input  [type]="showPassword?'text':'password'" class="form-control" [placeholder]="form.label"
+                      [formControlName]="form.formControlName">
+                      <span class="input-group-text" id="basic-addon2">
+                        <i class="iconStyle f-20" aria-hidden="true"
+                        style="cursor: pointer;"
+                        [ngClass]="showPassword?'fa fa-unlock-alt':'fa fa-lock'"
+                        (click)="showPassword=!showPassword"></i>
+                      </span>
+                    </div>
+                    </ng-container>
+                </ng-container>
+                <div class="submit">
+                  <ng-container *ngIf="sendRequest">
+                    <button class="btn forgotBtn" type="button" disabled>
+                      <span
+                        class="spinner-border spinner-border-sm "
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Loading...
+                    </button>
+                  </ng-container>
+                  <ng-container *ngIf="!sendRequest">
+                    <button  class="btn forgotBtn"
+                    [disabled]="!forgotForm.valid" > {{buttonFields['text']}}</button>
+                  </ng-container>
+                </div>
+                <div class="f-14 resentlink d-block text-center" >
+                  <span  routerLink="/login">Log in using Email</span>
+                </div>
+                </div>
+            </form>
+          </ng-container>
+          <ng-container *ngIf="showOTPField">
+            <div class="optField">
+              <span style="font-family: sfpro-sb;color:#db9f2d" class="f-12">OTP sent to {{allFormValues['email']}}</span>
+              <span class="resentlink">
+                <i class="fa fa-pencil-square-o f-14" aria-hidden="true"></i>
+              </span>
+              <div class="otpCard">
+                <span class="text-center d-block w-100 f-12"> Enter the OTP you received</span>
+                <ngx-otp-input [config]="otpInputConfig"></ngx-otp-input>
+              </div>
+              <div class="otpFooter" style="margin-block: 1.5rem;">
+                <span class="f-12">Didn't receive the OTP?</span>
+                <span class="f-12 resentlink"  >Resent OTP</span>
+              </div>
+            </div>
+            <div class="submit">
+              <ng-container *ngIf="sendRequest">
+                <button class="btn forgotBtn" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm "
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Loading...
+                </button>
+              </ng-container>
+              <ng-container *ngIf="!sendRequest">
+                <button  class="btn forgotBtn" > {{buttonFields['text']}}</button>
+              </ng-container>
+            </div>
+            <div class="f-14 resentlink d-block text-center"  style="margin-top: 1rem;" >
+              <span  routerLink="/login">Log in using Email</span>
+            </div>
+          </ng-container>
+
+         </div>
+    </div>
+    </div>
+  </div>
+

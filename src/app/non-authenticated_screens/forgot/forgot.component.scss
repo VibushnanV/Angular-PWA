@@ -1,0 +1,91 @@
+.forgotContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+}
+.forgotCard{
+  border:1px solid transparent;
+  background-color: var(--white-clr);
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: 90dvh;
+  min-height: auto;
+  width: clamp(300px,400px,60%);
+}
+.Icon_with_text{
+  margin-top: 1rem;
+  display: grid;
+  place-items: center;
+}
+.iconStyle{
+  color: var(--app-primary-clr);
+}
+.welcome{
+  font-family: 'sfpro-sb';
+  text-align: center;
+}
+.smalNote{
+  text-align: center;
+    font-size: 1.2rem;
+    color: cadetblue;
+}
+.forgotForm{
+  padding: 2rem;
+}
+.formContainer{
+  display: grid;
+  gap: 1rem;
+}
+.form-control{
+  font-size: 1.4rem;
+}
+.form-control:focus{
+  box-shadow: none;
+}
+.input-group-text {
+  background-color: transparent !important;
+}
+.tools{
+  display: flex;
+  font-size: 12px;
+  justify-content: space-between;
+}
+.submit{
+  display: flex;
+  justify-content: center;
+}
+.forgotBtn{
+  color: var(--white-clr) !important;
+  padding-inline: 4rem;
+  font-size: 1.5rem;
+  border-radius: 3rem;
+  position: relative;
+  background-image: linear-gradient(#FF6000, #f14837) !important;
+}
+.otpCard{
+  border: 1px solid #f5f2f2;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.resentlink{
+  color: var(--app-primary-clr);
+  margin-left: 2px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 300ms ease-in-out,transform 300ms ease-in-out;
+}
+.resentlink:hover{
+  opacity: 1;
+  transform: scale(0.9);
+}
+::ng-deep{
+  .ngx-otp-input{
+    border: 1px solid #f5f2f2 !important;
+  }
+  .ngx-otp-input-container {
+    display: flex !important;
+    justify-content: center !important;
+}
+  }

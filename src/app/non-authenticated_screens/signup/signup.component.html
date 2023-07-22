@@ -1,0 +1,118 @@
+<div class="container-fluid">
+  <div class="signupContainer">
+    <div class="signupCard loginCard animate__animated animate__bounceInLeft">
+         <div class="Icon_with_text">
+          <i class="fa fa-bullseye iconStyle f-30"  aria-hidden="true"></i>
+          <div class="d-block">
+            <span class="welcome d-block f-20">Create Account</span>
+            <small class="smalNote d-block">Elevate your business with a seamless account setup!</small>
+          </div>
+         </div>
+         <div class="signupForm">
+            <form [formGroup]="formValues" (ngSubmit)="signup(formValues)" style="display: grid;">
+              <div class="formContainer">
+                <ng-container *ngFor="let form of signupForm">
+                  <ng-container *ngIf="form.type=='email'">
+                    <div class="input-group input-group-lg position-relative">
+                      <input type="text" class="form-control" [placeholder]="form.label"
+                      [formControlName]="form.formControlName">
+                      <span class="input-group-text" id="basic-addon2">
+                        <i class="iconStyle f-15" [ngClass]="form.icon"  aria-hidden="true"></i>
+                      </span>
+                      <ng-container
+                      *ngIf="
+                      formValues.get(form.formControlName)?.touched &&
+                      formValues.get(form.formControlName)?.invalid
+                      ">
+                      <div
+                        *ngIf="formValues.get(form.formControlName)?.errors?.['required']"
+                        class="errorTextInput">
+                      Email is required.
+                      </div>
+                      <div
+                        *ngIf="formValues.get(form.formControlName)?.errors?.['email']"
+                        class="errorTextInput">
+                         Invalid Email
+                      </div>
+                    </ng-container>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="form.type=='password'">
+                    <div class="input-group input-group-lg position-relative">
+                      <input  [type]="showPassword?'text':'password'" class="form-control" [placeholder]="form.label"
+                      [formControlName]="form.formControlName">
+                      <span class="input-group-text" id="basic-addon2">
+                        <i class="iconStyle f-20" aria-hidden="true"
+                        style="cursor: pointer;"
+                        [ngClass]="showPassword?'fa fa-unlock-alt':'fa fa-lock'"
+                        (click)="showPassword=!showPassword"></i>
+                      </span>
+                      <ng-container
+                      *ngIf="
+                      formValues.get(form.formControlName)?.touched &&
+                      formValues.get(form.formControlName)?.invalid">
+                      <div
+                        *ngIf="formValues.get(form.formControlName)?.errors?.['required']"
+                        class="errorTextInput">
+                      Password  is required.
+                      </div>
+                      <div
+                        *ngIf="formValues.get(form.formControlName)?.errors?.['minlength']"
+                        class="errorTextInput">
+                        Minimum
+                        {{formValues.get(form.formControlName)?.errors?.['minlength'].requiredLength}}
+                        Characters required
+                      </div>
+                      <div
+                        *ngIf="formValues.get(form.formControlName)?.errors?.['maxlength']"
+                        class="errorTextInput">
+                        Maximum
+                        {{formValues.get(form.formControlName)?.errors?.['maxlength'].requiredLength}}
+                        Characters required
+                      </div>
+                    </ng-container>
+                    </div>
+                    </ng-container>
+                    <ng-container *ngIf="form.type=='text'">
+                      <div class="input-group input-group-lg position-relative">
+                        <input type="text" class="form-control" [placeholder]="form.label"
+                        [formControlName]="form.formControlName">
+                        <span class="input-group-text" id="basic-addon2">
+                          <i class="iconStyle f-15" [ngClass]="form.icon"  aria-hidden="true"></i>
+                        </span>
+                        <ng-container *ngIf="formValues.get(form.formControlName)?.touched && formValues.get(form.formControlName)?.invalid"
+                        class="errorTextInput">
+                        <div *ngIf="formValues.get(form.formControlName)?.errors?.['required']" class="errorTextInput">
+                          {{form.label}} is required.
+                        </div>
+                      </ng-container>
+                      </div>
+
+                    </ng-container>
+                </ng-container>
+                <div class="submit">
+                  <ng-container *ngIf="sendRequest">
+                    <button class="btn signUpBtn" type="button" disabled>
+                      <span
+                        class="spinner-border spinner-border-sm "
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Loading...
+                    </button>
+                  </ng-container>
+                  <ng-container *ngIf="!sendRequest">
+                    <button  class="btn signUpBtn"
+                    [disabled]="!formValues.valid" >Signup</button>
+                  </ng-container>
+                </div>
+                <div class="singUp f-14 text-center mt-4">
+                  Already have an account? <span style="color: #2a7cf5;" class="resentlink">
+                    <a routerLink="/login" style="cursor: pointer;">Sign In</a></span>
+                </div>
+                </div>
+            </form>
+         </div>
+    </div>
+    </div>
+  </div>

@@ -1,10 +1,10 @@
-.loginContainer{
+.signupContainer{
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100dvh;
 }
-.loginCard{
+.signupCard{
   border:1px solid transparent;
   background-color: var(--white-clr);
   border-radius: 8px;
@@ -30,7 +30,7 @@
     font-size: 1.2rem;
     color: cadetblue;
 }
-.loginForm{
+.signupForm{
   padding: 2rem;
 }
 .formContainer{
@@ -55,7 +55,7 @@
   display: flex;
   justify-content: center;
 }
-.loginBtn{
+.signUpBtn{
   color: var(--white-clr) !important;
   padding-inline: 4rem;
   font-size: 1.5rem;
@@ -63,7 +63,7 @@
   position: relative;
   background-image: linear-gradient(#FF6000, #f14837) !important;
 }
-.loginBtn::after{
+.signUpBtn::after{
   position: absolute;
   content: "\f090";
   font-family: "FontAwesome";
@@ -82,7 +82,7 @@
   opacity: 1;
   transform: scale(0.9);
 }
-.loginBtn:hover::after {
+.signUpBtn:hover::after {
   opacity: 1;
 }
 .errorTextInput{
