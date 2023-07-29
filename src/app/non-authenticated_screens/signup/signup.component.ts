@@ -66,7 +66,9 @@ formValues=new FormGroup({
       endPoint:'createUser',
       body:{}
      }
-     let requestBody:any =values
+     if(values['password']==values['confirmPassword']){
+      let requestBody:any ={...values}
+      delete requestBody['confirmPassword']
     params['body']['encrypted'] =this.utils.encrypt(requestBody,environment.authenticationSecretKey)
     this.apis.userAuthentication(params).subscribe((response:any)=>{
      let result:any=this.utils.decrypt(response['encrypted'],environment.authenticationSecretKey)
@@ -82,4 +84,5 @@ formValues=new FormGroup({
       console.log(err,'err')
     })
   }
+}
 }

@@ -58,18 +58,21 @@
             </form>
           </ng-container>
           <ng-container *ngIf="showOTPField">
+
             <div class="optField">
               <span style="font-family: sfpro-sb;color:#db9f2d" class="f-12">OTP sent to {{allFormValues['email']}}</span>
               <span class="resentlink">
-                <i class="fa fa-pencil-square-o f-14" aria-hidden="true"></i>
+                <i class="fa fa-pencil-square-o f-14" aria-hidden="true" (click)="editEmail()"></i>
               </span>
               <div class="otpCard">
                 <span class="text-center d-block w-100 f-12"> Enter the OTP you received</span>
-                <ngx-otp-input [config]="otpInputConfig"></ngx-otp-input>
+                <form [formGroup]="forgotForm">
+                  <ngx-otp-input [config]="otpInputConfig" #ngxOtp (fill)="otpChanges($event)"></ngx-otp-input>
+                </form>
               </div>
               <div class="otpFooter" style="margin-block: 1.5rem;">
                 <span class="f-12">Didn't receive the OTP?</span>
-                <span class="f-12 resentlink"  >Resent OTP</span>
+                <span class="f-12 resentlink" (click)="resendOtp()" >Resent OTP</span>
               </div>
             </div>
             <div class="submit">
@@ -84,7 +87,7 @@
                 </button>
               </ng-container>
               <ng-container *ngIf="!sendRequest">
-                <button  class="btn forgotBtn" > {{buttonFields['text']}}</button>
+                <button  class="btn forgotBtn" (click)="forgot(forgotForm)"> {{buttonFields['text']}}</button>
               </ng-container>
             </div>
             <div class="f-14 resentlink d-block text-center"  style="margin-top: 1rem;" >

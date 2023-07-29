@@ -12,6 +12,8 @@ import { NgxOtpInputModule } from 'ngx-otp-input';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { SignupComponent } from './non-authenticated_screens/signup/signup.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonComponentsModule } from './authenticated_screens/common_components/common-components/common-components.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { SignupComponent } from './non-authenticated_screens/signup/signup.compo
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    NgxOtpInputModule
+    NgxOtpInputModule,
+    BrowserAnimationsModule,
+    CommonComponentsModule
   ],
   providers: [HttpClient,CookieService],
   bootstrap: [AppComponent]
