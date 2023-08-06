@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OtpInputComponent } from './otp-input/otp-input.component';
 import { NgxOtpInputModule } from 'ngx-otp-input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -14,10 +14,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     NgxOtpInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule
   ],
   exports:[
-    OtpInputComponent
+    OtpInputComponent,
+    MatSidenavModule
   ]
 })
 export class CommonComponentsModule { }

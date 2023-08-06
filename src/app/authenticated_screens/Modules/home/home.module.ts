@@ -5,6 +5,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigatorComponent } from './navigator/navigator.component';
+import { CommonComponentsModule } from '../../common_components/common-components/common-components.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { NavigatorComponent } from './navigator/navigator.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    RouterModule,
+    HomeRoutingModule,
+    CommonComponentsModule
   ]
 })
 export class HomeModule { }

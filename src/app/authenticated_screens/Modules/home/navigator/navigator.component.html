@@ -1,1 +1,29 @@
-<p>navigator works!</p>
+<div class="topcontents">
+  <div class="f-25  c-p">
+    <span class="gifImage appName">
+    <img src="../../../../../assets/animated_icons/system-solid-33-speed.gif" alt="SkillRoute"
+    width="15%">
+    SkillRoute</span>
+  </div>
+  <hr class="border border-white">
+  <div class="navbody">
+    <ul class="list-group list-group-flush c-p">
+      <ng-container *ngFor="let screens of mainScreensList">
+
+        <li class="list-group-item"
+        [routerLink]="screens.href"
+        routerLinkActive="activeTab"
+        #rla="routerLinkActive">
+        <ng-container *ngIf="screens.fontAwesome">
+          <i class="icons" [class]="screens.fontAwesome" aria-hidden="true"></i>
+        </ng-container>
+        <ng-container *ngIf="screens.imageIcon">
+          <img [src]="screens.imageIcon" alt="icon"  class="icons"/>
+        </ng-container>
+        {{screens['tabName']}}</li>
+      </ng-container>
+    </ul>
+  </div>
+
+</div>
+

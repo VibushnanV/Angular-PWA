@@ -26,12 +26,17 @@
 }
 :root {
   font-size: 62.5%;
-  --primary-bg-color: #eee;
+  --primary-bg-color: #f5f5f5;
   --scrollClr:#f8f8f8;
   --seconday-bg-color:#ccc;
   --white-clr:#fff;
   --app-primary-clr:#FF6000;
   --app-secondary-clr:#f14837;
+  --sidebar-clr:#545d68;
+  --cadet-blue:#5f9ea0;
+  --dark-blue:#0f0f0f;
+  --sideBarText-Clr: #aaa;
+
 }
 html {
   height: 100dvh;
@@ -42,6 +47,7 @@ html {
   margin: 0;
   padding: 0;
   font-family: "sfpro-r", sans-serif;
+  scroll-behavior: smooth ;
 }
 body {
   margin: 0;
@@ -76,9 +82,30 @@ body {
 .f-15{
   font-size: 1.5rem !important;
 }
+.f-20{
+  font-size: 2rem !important;
+}
+.f-25{
+  font-size: 2.5rem !important;
+}
 .f-30{
   font-size: 3rem !important;
 }
+.c-p{
+  cursor: pointer !important;
+}
+// Animations
+@keyframes pulse {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
 
+  50% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+  }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

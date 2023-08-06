@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import CryptoJS from 'crypto-js';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
-
+  collapseSideNav$: BehaviorSubject<any> = new BehaviorSubject(true);
   constructor() { }
   encrypt(value : any,key:any){
     try{
@@ -37,6 +38,23 @@ export class UtilsService {
         reject(err)
       }
     })
+
+  }
+  collapseSideBar(value:boolean){
+    this.collapseSideNav$.next(value)
+  }
+  getScreenList(screens:any,userRole:string,roleData:any){
+    return new Promise((resolve,reject)=>{
+      let list:any[]=[]
+      for(let doc of screens){
+            if(roleData[doc['accessKey']] && roleData[doc['accessKey']].length){
+              if(roleData[doc['accessKey']].includes(userRole)){
+                list.push(doc['screenData'])
+              }
+            }
+      }
+      resolve(list)
+  })
 
   }
 }

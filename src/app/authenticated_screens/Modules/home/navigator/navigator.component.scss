@@ -1,0 +1,44 @@
+.appName{
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(234,249,249,0.67) 0.1%, rgba(239,249,251,0.63) 90.1% );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style:italic;
+  font-family: 'sfpro-sb';
+}
+
+.gifImage:hover{
+  img{
+  animation: pulse 1s ease-in  1 ;
+  }
+}
+.navbody{
+  height: 450px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.list-group-item{
+  border: 0px transparent;
+  margin-bottom: 1.5rem;
+  background: transparent;
+  color: var(--sideBarText-Clr);
+
+}
+.icons{
+  color: var(--sideBarText-Clr);
+  margin-right: 5px;
+}
+.list-group-item:hover{
+  color: var(--white-clr);
+  .icons{
+    animation: pulse 1s ease-in  1 !important;
+  }
+
+}
+.activeTab{
+  background-color: #383736;
+  border-radius: 0.8rem;
+  color: var(--white-clr);
+  .icons{
+    color: var(--white-clr);
+  }
+}

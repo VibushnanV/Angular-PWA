@@ -19,4 +19,7 @@ export class ApiserviceService {
   userAuthentication(params:any){
      return this.http.post(`${this.localUrl}/${params.endPoint}`,params.body,this.httpHeaders)
   }
+  getData(params:any){
+    return this.http.post(`${this.localUrl}/${params.endPoint}`,params.body,this.httpHeaders)
+ }
 }

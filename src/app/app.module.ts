@@ -14,7 +14,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { SignupComponent } from './non-authenticated_screens/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonComponentsModule } from './authenticated_screens/common_components/common-components/common-components.module';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +35,7 @@ import { CommonComponentsModule } from './authenticated_screens/common_component
     }),
     NgxOtpInputModule,
     BrowserAnimationsModule,
-    CommonComponentsModule
+    CommonComponentsModule,
   ],
   providers: [HttpClient,CookieService],
   bootstrap: [AppComponent]

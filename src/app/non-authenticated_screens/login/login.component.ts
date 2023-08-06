@@ -59,6 +59,23 @@ sendRequest:boolean=false
      let result:any=this.utils.decrypt(response['encrypted'],environment.authenticationSecretKey)
      if(result['status']=='success'){
      let loginDetails:any=result['data'][0]
+     let params:any={
+      endPoint:'getData',
+      body:
+        {"collection":"Authorization"}
+     }
+    this.apis.getData(params).subscribe((response:any)=>{
+      console.log(response)
+      if(response['status']=='success'){
+        let details:any=this.utils.encrypt(response['data'],environment.dataSeceretKey)
+       localStorage.setItem('Auth_list',details)
+      }
+      else{
+
+      }
+    },(err:any)=>{
+      console.log(err)
+    })
      loginDetails['isActive'] = true;
      loginDetails = this.utils.encrypt(
        loginDetails,

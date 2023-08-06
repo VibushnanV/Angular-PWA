@@ -1,0 +1,43 @@
+.headerbar{
+   background: linear-gradient(to left, #f46b45, #e69142);
+  // background-color:#fff;
+   position: sticky;
+   top: 0px;
+}
+.headContens{
+  margin-inline: 1rem;
+  height: inherit;
+  grid-template-columns: 30% 40% 30%;
+}
+.iconStyle{
+  color: var(--white-clr);
+  padding: 0.8rem;
+  border-radius: 30%;
+  transition: font-size 500ms ease-in-out, background-color 500ms ease-in-out;
+  &:hover{
+   background-color: var(--app-primary-clr);
+   transform: scale(0.8);
+   }
+}
+.appName{
+color: #fff;
+  font-style:italic;
+  font-family: 'sfpro-sb';
+  margin-top: 4px;
+}
+
+.gifImage:hover{
+  img{
+  animation: pulse 1s ease-in  1 ;
+  }
+}
+
+.profileSection{
+  color: var(--primary-bg-color);
+  margin-right: 2rem;
+
+}
+.userName{
+  margin-right: 5px;
+  font-family: 'sfpro-sb';
+}

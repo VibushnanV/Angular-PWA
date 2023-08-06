@@ -1,1 +1,32 @@
-<p>header works!</p>
+<div class="w-100 headerbar" style="height: 55px;">
+    <div class="headContens d-grid justify-content-start align-items-center " >
+      <div class="collapseIcon c-p d-flex align-items-start gap-2">
+        <ng-container *ngIf="!isOpened">
+          <i class="fa fa-bars iconStyle f-25" (click)="toogleSidebar()" aria-hidden="true"></i>
+            <div class="f-15 appName c-p d-flex align-items-baseline">
+              <span class="mt-2 gifImage">
+                <img src="../../../../../assets/animated_icons/system-solid-33-speed.gif" alt="SkillRoute"
+                width="11%">
+                <span class="f-15 appName">SkillRoute</span>
+              </span>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isOpened">
+          <i class="fa fa-times iconStyle f-15" (click)="toogleSidebar()" aria-hidden="true"></i>
+        </ng-container>
+      </div>
+      <div></div>
+      <div class="profileSection d-flex justify-content-end mr-4 c-p dropdown">
+          <div class="d-flex " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="f-15 d-flex align-items-center userName">{{userDetails['name']}}</span>
+            <span><i class="bi bi-person-circle f-30 userProfile"></i></span>
+          </div>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+      </div>
+    </div>
+</div>
+
