@@ -80,6 +80,12 @@
   opacity: 1;
   transform: scale(0.9);
 }
+.forgotBtn:hover {
+  .icon{
+  opacity: 1;
+  animation: shake 1s ease-in infinite;
+  }
+}
 ::ng-deep{
   .ngx-otp-input{
     border: 1px solid #f5f2f2 !important;

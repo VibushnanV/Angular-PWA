@@ -68,10 +68,10 @@
   position: absolute;
   content: "\f090";
   font-family: "FontAwesome";
-  opacity:0;
+  opacity:0.8;
   padding-left: 0.8rem;
   transition: opacity 200ms ease-in ;
-  animation: shake 1s ease-in infinite;
+
 }
 .resentlink{
   margin-left: 2px;
@@ -85,20 +85,11 @@
 }
 .loginBtn:hover::after {
   opacity: 1;
+  animation: shake 1s ease-in infinite;
 }
 .errorTextInput{
 position: absolute;
     top: 35px;
     color: red;
 }
-@keyframes shake {
-  0%{
-   transform: translateX(-2px);
-  }
-  50%{
-    transform: translateX(2px);
-  }
-  100%{
-    transform: translateX(-2px);
-  }
-}
+

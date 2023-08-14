@@ -63,7 +63,7 @@ formValues=new FormGroup({
     let values:any=formData.value
     this.sendRequest=true
      let params:any={
-      endPoint:'createUser',
+      endPoint:'auth/createUser',
       body:{}
      }
      if(values['password']==values['confirmPassword']){

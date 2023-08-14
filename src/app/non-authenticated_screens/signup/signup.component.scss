@@ -65,12 +65,12 @@
 }
 .signUpBtn::after{
   position: absolute;
-  content: "\f090";
+  content: "\f2bc";
   font-family: "FontAwesome";
-  opacity:0;
+  opacity:0.8;
   padding-left: 0.8rem;
   transition: opacity 200ms ease-in ;
-  animation: shake 1s ease-in infinite;
+
 }
 .resentlink{
   margin-left: 2px;
@@ -84,6 +84,7 @@
 }
 .signUpBtn:hover::after {
   opacity: 1;
+  animation: shake 1s ease-in infinite;
 }
 .errorTextInput{
 position: absolute;

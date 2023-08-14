@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -7,7 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { CommonComponentsModule } from '../../common_components/common-components/common-components.module';
 import { RouterModule } from '@angular/router';
-
+import lottie from 'lottie-web';
+import { defineElement } from 'lord-icon-element';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,11 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     HomeRoutingModule,
     CommonComponentsModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HomeModule { }
+export class HomeModule {
+  constructor() {
+    defineElement(lottie.loadAnimation);
+  }
+ }

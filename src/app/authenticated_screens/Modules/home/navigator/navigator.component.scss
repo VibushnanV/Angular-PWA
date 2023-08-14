@@ -6,11 +6,6 @@
   font-family: 'sfpro-sb';
 }
 
-.gifImage:hover{
-  img{
-  animation: pulse 1s ease-in  1 ;
-  }
-}
 .navbody{
   height: 450px;
   overflow-y: auto;
@@ -30,7 +25,7 @@
 .list-group-item:hover{
   color: var(--white-clr);
   .icons{
-    animation: pulse 1s ease-in  1 !important;
+    animation: swirl-in-fwd 0.6s ease-out both !important;
   }
 
 }
@@ -38,6 +33,7 @@
   background-color: #383736;
   border-radius: 0.8rem;
   color: var(--white-clr);
+  border-right:10px solid (var(--app-primary-clr));
   .icons{
     color: var(--white-clr);
   }

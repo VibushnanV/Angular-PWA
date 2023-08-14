@@ -68,7 +68,7 @@ export class ForgotComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedForm=this.masterForm['getEmail']
-    this.buttonFields={text:"Get OTP",endPoint:'generateOtp'}
+    this.buttonFields={text:"Get OTP",endPoint:'verification/generateOtp',id:"generateOtp"}
     this.forgotForm=new FormGroup({
     })
     for(let form of this.selectedForm){
@@ -78,7 +78,7 @@ export class ForgotComponent implements OnInit {
   editEmail(){
     this.showOTPField=false
     this.selectedForm=this.masterForm['getEmail']
-    this.buttonFields={text:"Get OTP",endPoint:'generateOtp'}
+    this.buttonFields={text:"Get OTP",endPoint:'verification/generateOtp',id:"generateOtp"}
     this.forgotForm=new FormGroup({
     })
     for(let form of this.selectedForm){
@@ -95,10 +95,10 @@ export class ForgotComponent implements OnInit {
     this.allFormValues={...this.allFormValues,...values}
     let params:any={}
     let requestBody:any
-    if(this.buttonFields['endPoint']=='generateOtp'){
+    if(this.buttonFields['id']=='generateOtp'){
       requestBody=values
     }
-    else if(this.buttonFields['endPoint']=='verifyOtp'){
+    else if(this.buttonFields['id']=='verifyOtp'){
     requestBody=this.allFormValues
     }
     else if(this.buttonFields['endPoint']=='forgotPassword'){
@@ -113,9 +113,9 @@ export class ForgotComponent implements OnInit {
      let result:any=this.utils.decrypt(response['encrypted'],environment.authenticationSecretKey)
      if(result['status']=='success'){
       let data:any=result['data']
-      if(this.buttonFields['endPoint']=='generateOtp'){
+      if(this.buttonFields['id']=='generateOtp'){
       this.showOTPField=true
-      this.buttonFields={text:"Verify OTP",endPoint:'verifyOtp'}
+      this.buttonFields={text:"Verify OTP",endPoint:'verification/verifyOtp',id:"verifyOtp"}
       this.selectedForm=this.masterForm['otpForm']
       this.forgotForm=new FormGroup({
       })
@@ -133,10 +133,10 @@ export class ForgotComponent implements OnInit {
         console.log(this.otpInput)
       },2000)
     }
-    else if(this.buttonFields['endPoint']=='verifyOtp'){
+    else if(this.buttonFields['id']=='verifyOtp'){
       this.showOTPField=false
       this.selectedForm=this.masterForm['passwordField']
-      this.buttonFields={text:"Update Password",endPoint:'forgotPassword'}
+      this.buttonFields={text:"Update Password",endPoint:'auth/forgotPassword'}
       this.forgotForm=new FormGroup({
       })
       for(let form of this.selectedForm){

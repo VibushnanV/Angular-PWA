@@ -1,4 +1,8 @@
 @import 'animate.css';
+@import url("../node_modules/primeng/resources/primeng.min.css");
+@import url("../node_modules/primeng/resources/themes/lara-light-blue/theme.css");
+@import url("../node_modules/primeng/resources/primeng.min.css");
+@import "~primeicons/primeicons.css";
 /* You can add global styles to this file, and also import other style files */
 @font-face {
   font-family: "sfpro-l";
@@ -95,6 +99,17 @@ body {
   cursor: pointer !important;
 }
 // Animations
+@keyframes shake {
+  0%{
+   transform: translateX(-2px);
+  }
+  50%{
+    transform: translateX(2px);
+  }
+  100%{
+    transform: translateX(-2px);
+  }
+}
 @keyframes pulse {
   0% {
     transform: scale3d(1, 1, 1);
@@ -107,5 +122,55 @@ body {
     transform: scale3d(1, 1, 1);
   }
   }
+
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1rem;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+ @keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+ @keyframes swirl-in-fwd {
+  0% {
+    transform: rotate(-540deg) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

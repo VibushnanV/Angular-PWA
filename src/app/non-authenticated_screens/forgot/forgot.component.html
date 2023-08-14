@@ -48,7 +48,9 @@
                   </ng-container>
                   <ng-container *ngIf="!sendRequest">
                     <button  class="btn forgotBtn"
-                    [disabled]="!forgotForm.valid" > {{buttonFields['text']}}</button>
+                    [disabled]="!forgotForm.valid" > {{buttonFields['text']}}
+                    <i class="fa fa-arrow-circle-right icon" aria-hidden="true"></i>
+                  </button>
                   </ng-container>
                 </div>
                 <div class="f-14 resentlink d-block text-center" >
@@ -87,7 +89,9 @@
                 </button>
               </ng-container>
               <ng-container *ngIf="!sendRequest">
-                <button  class="btn forgotBtn" (click)="forgot(forgotForm)"> {{buttonFields['text']}}</button>
+                <button  class="btn forgotBtn" (click)="forgot(forgotForm)"> {{buttonFields['text']}}
+                  <i class="fa fa-arrow-circle-right icon" aria-hidden="true"></i>
+                </button>
               </ng-container>
             </div>
             <div class="f-14 resentlink d-block text-center"  style="margin-top: 1rem;" >

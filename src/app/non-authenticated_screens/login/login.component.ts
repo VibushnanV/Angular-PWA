@@ -49,7 +49,7 @@ sendRequest:boolean=false
     let values:any=formData.value
     this.sendRequest=true
      let params:any={
-      endPoint:'login',
+      endPoint:'auth/login',
       body:{}
      }
      const { email, password } = values
@@ -60,15 +60,31 @@ sendRequest:boolean=false
      if(result['status']=='success'){
      let loginDetails:any=result['data'][0]
      let params:any={
-      endPoint:'getData',
+      endPoint:'api/getData',
       body:
         {"collection":"Authorization"}
      }
     this.apis.getData(params).subscribe((response:any)=>{
-      console.log(response)
       if(response['status']=='success'){
         let details:any=this.utils.encrypt(response['data'],environment.dataSeceretKey)
        localStorage.setItem('Auth_list',details)
+       loginDetails['isActive'] = true;
+       loginDetails = this.utils.encrypt(
+         loginDetails,
+         environment.dataSeceretKey,
+       );
+       localStorage.setItem('userdetails', loginDetails);
+       if (values.remember) {
+       let UserDetails:any = this.utils.encrypt(
+          values,
+          environment.dataSeceretKey,
+        );
+        let date: any = moment().add(15, 'day').toDate();
+        this.cookie.set(`userdetails`, UserDetails, date);
+      } else {
+        this.cookie.delete(`userdetails`);
+      }
+       this.router.navigate(['home'])
       }
       else{
 
@@ -76,23 +92,6 @@ sendRequest:boolean=false
     },(err:any)=>{
       console.log(err)
     })
-     loginDetails['isActive'] = true;
-     loginDetails = this.utils.encrypt(
-       loginDetails,
-       environment.dataSeceretKey,
-     );
-     localStorage.setItem('userdetails', loginDetails);
-     if (values.remember) {
-     let UserDetails:any = this.utils.encrypt(
-        values,
-        environment.dataSeceretKey,
-      );
-      let date: any = moment().add(15, 'day').toDate();
-      this.cookie.set(`userdetails`, UserDetails, date);
-    } else {
-      this.cookie.delete(`userdetails`);
-    }
-    this.router.navigate(['home'])
      this.sendRequest=false
      }
      else{

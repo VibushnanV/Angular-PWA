@@ -1,14 +1,21 @@
 <div class="w-100 headerbar" style="height: 55px;">
     <div class="headContens d-grid justify-content-start align-items-center " >
-      <div class="collapseIcon c-p d-flex align-items-start gap-2">
+      <div class="collapseIcon c-p d-flex align-items-start gap-5 ">
         <ng-container *ngIf="!isOpened">
           <i class="fa fa-bars iconStyle f-25" (click)="toogleSidebar()" aria-hidden="true"></i>
             <div class="f-15 appName c-p d-flex align-items-baseline">
-              <span class="mt-2 gifImage">
-                <img src="../../../../../assets/animated_icons/system-solid-33-speed.gif" alt="SkillRoute"
-                width="11%">
-                <span class="f-15 appName">SkillRoute</span>
+              <span class="gifImage">
+                <lord-icon
+                target=".gifImage"
+
+                trigger="hover"
+                src="../../../../../assets/animated_icons/increase.json"
+              >
+            </lord-icon>
+            <span class="f-15 appName">SkillRoute</span>
+
               </span>
+
             </div>
         </ng-container>
         <ng-container *ngIf="isOpened">
@@ -16,15 +23,47 @@
         </ng-container>
       </div>
       <div></div>
-      <div class="profileSection d-flex justify-content-end mr-4 c-p dropdown">
-          <div class="d-flex " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="f-15 d-flex align-items-center userName">{{userDetails['name']}}</span>
+      <div class="profileSection d-flex justify-content-end mr-4 c-p dropdown ">
+          <div class="d-flex profileTrigger" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="f-15 d-flex align-items-center userName">{{profile_details['name']}}</span>
             <span><i class="bi bi-person-circle f-30 userProfile"></i></span>
           </div>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <ul class="dropdown-menu p-3">
+            <div class="userDetails">
+              <span class="userFirstLetter rounded-5 f-20">{{ profile_details.userFirstLetter }}</span>
+              <div class="userRole f-15 mt-2 ">{{profile_details?.role.role }}</div>
+                <div class="userName f-15">{{ profile_details?.name | titlecase }}</div>
+                <div class="userEmail f-15">{{profile_details?.email }}</div>
+          </div>
+          <hr  style="border-top:1px solid #f35353 ;">
+          <ng-container *ngFor="let button of profile_details.buttonTabs">
+            <div class="d-block mt-3">
+              <ng-container *ngIf="button.type && button.type=='popup'">
+
+                <button
+                class="position btn btn-light btn-sm dropdown-item text-left f-14 actions"
+              >
+              <i class="icons" [class]="button.fontAwesome" aria-hidden="true"></i>
+               {{button.label}}
+              </button>
+              </ng-container>
+              <ng-container *ngIf="button.type && button.type=='route'">
+              <button
+                class=" position btn btn-light btn-sm dropdown-item text-left f-14 actions"
+                (click)="navigate(button)"
+              >
+              <i class="icons" [class]="button.fontAwesome" aria-hidden="true"></i>
+               {{button.label}}
+              </button>
+              </ng-container>
+              <hr class="dropdown-divider" style="border-top:1px solid #eee ;">
+            </div>
+        </ng-container>
+        <div class="version d-flex align-items-center justify-content-center">
+          <span class="version_name text-muted">{{profile_details.version}}
+          </span>
+        </div>
+
           </ul>
       </div>
     </div>

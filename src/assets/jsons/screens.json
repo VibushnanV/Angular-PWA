@@ -5,7 +5,7 @@
       "href": "dashboard",
       "tabName": "Dashboard",
       "tabId": "dashboard",
-      "fontAwesome":"bi bi-clipboard-data-fill"
+      "fontAwesome":"fa fa-area-chart"
     }
   },
   {"accessKey":"monitor_screen","screenData":
@@ -13,7 +13,7 @@
       "href": "monitor",
       "tabName": "Monitor",
       "tabId": "monitor",
-      "fontAwesome":"bi bi-display"
+      "fontAwesome":"fa fa-desktop"
     }
   },
   {"accessKey":"configuration_screen","screenData":
@@ -21,7 +21,7 @@
       "href": "configuration",
       "tabName": "Configuration",
       "tabId": "configuration",
-      "fontAwesome":"bi bi-gear-wide-connected"
+      "fontAwesome":"fa fa-cog"
     }
   }
   ]

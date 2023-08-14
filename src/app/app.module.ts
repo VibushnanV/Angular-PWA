@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { SignupComponent } from './non-authenticated_screens/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonComponentsModule } from './authenticated_screens/common_components/common-components/common-components.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,8 @@ import { CommonComponentsModule } from './authenticated_screens/common_component
     CommonComponentsModule,
   ],
   providers: [HttpClient,CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+
+}

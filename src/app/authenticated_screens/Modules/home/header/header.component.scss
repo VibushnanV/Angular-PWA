@@ -20,24 +20,38 @@
    }
 }
 .appName{
-color: #fff;
+  color: var(--white-clr);
   font-style:italic;
   font-family: 'sfpro-sb';
-  margin-top: 4px;
 }
 
-.gifImage:hover{
-  img{
-  animation: pulse 1s ease-in  1 ;
+.profileTrigger:hover{
+    animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
   }
-}
 
 .profileSection{
-  color: var(--primary-bg-color);
+  color: var(--white-clr);
   margin-right: 2rem;
-
 }
 .userName{
   margin-right: 5px;
   font-family: 'sfpro-sb';
+}
+
+.userDetails {
+  text-align: center;
+
+  .userFirstLetter {
+    background-color:var(--app-primary-clr);
+    color: var(--white-clr);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+  }
+}
+.actions:hover{
+ .icons{
+  animation: swirl-in-fwd 0.6s ease-out both;
+
+ }
 }
