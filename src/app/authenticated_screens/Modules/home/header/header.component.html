@@ -41,6 +41,7 @@
               <ng-container *ngIf="button.type && button.type=='popup'">
 
                 <button
+                (click)="navigate(button)"
                 class="position btn btn-light btn-sm dropdown-item text-left f-14 actions"
               >
               <i class="icons" [class]="button.fontAwesome" aria-hidden="true"></i>
@@ -68,4 +69,9 @@
       </div>
     </div>
 </div>
+<!-- Modal -->
+<ng-container *ngIf="openModal">
+  <app-dialog-modal [modalContent]="modalContent" (sendmodalData)="modalEvents($event)"></app-dialog-modal>
+</ng-container>
+
 

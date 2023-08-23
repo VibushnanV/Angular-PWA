@@ -93,3 +93,8 @@ position: absolute;
     color: red;
 }
 
+.input-group{
+  .ng-touched.ng-invalid{
+  border: 1px solid red;
+}
+}

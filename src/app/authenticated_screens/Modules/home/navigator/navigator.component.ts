@@ -4,6 +4,7 @@ import  Screens from '../../../../../assets/jsons/screens.json'
 import { environment } from 'src/environments/environment';
 import { ApiserviceService } from 'src/services/apiservice.service';
 import { Router } from '@angular/router';
+import { FirebaseService } from 'src/services/firebase.service';
 @Component({
   selector: 'app-navigator',
   templateUrl: './navigator.component.html',
@@ -13,9 +14,10 @@ export class NavigatorComponent implements OnInit {
    mainScreensList:any[]=[]
    userDetails:any=[]
    roles:any[]=[]
+   queryService:any
   constructor(private apis:ApiserviceService,
     private utils:UtilsService,
-    private router:Router) {
+    private router:Router,private fs:FirebaseService) {
     this.mainScreensList=[]
     utils.getLocalstorgaeData('userdetails',environment.dataSeceretKey).then((result:any)=>{
      this.userDetails=result
@@ -31,7 +33,9 @@ export class NavigatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.queryService = environment.isHttpService
+    ? this.apis
+    : this.fs;
   }
 
 }

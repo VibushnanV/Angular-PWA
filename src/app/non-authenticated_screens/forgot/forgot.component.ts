@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgxOtpInputConfig } from 'ngx-otp-input';
 import { environment } from 'src/environments/environment';
 import { ApiserviceService } from 'src/services/apiservice.service';
+import { FirebaseService } from 'src/services/firebase.service';
 import { UtilsService } from 'src/services/utils.service';
 @Component({
   selector: 'app-forgot',
@@ -61,12 +62,17 @@ export class ForgotComponent implements OnInit {
     otpLength: 6,
     autoFocus: true,
   }
+  queryService:any
   @ViewChild("ngxOtp", { static: false }) otpInput: any;
-  constructor(private utils:UtilsService,private apis:ApiserviceService,private router:Router) { }
+  constructor(private utils:UtilsService,private apis:ApiserviceService,private router:Router,
+    private fs:FirebaseService) { }
   allFormValues:any={}
 
 
   ngOnInit(): void {
+    this.queryService = environment.isHttpService
+    ? this.apis
+    : this.fs;
     this.selectedForm=this.masterForm['getEmail']
     this.buttonFields={text:"Get OTP",endPoint:'verification/generateOtp',id:"generateOtp"}
     this.forgotForm=new FormGroup({
@@ -109,7 +115,7 @@ export class ForgotComponent implements OnInit {
       body:{}
      }
     params['body']['encrypted'] =this.utils.encrypt(requestBody,environment.authenticationSecretKey)
-    this.apis.userAuthentication(params).subscribe((response:any)=>{
+    this.queryService.userAuthentication(params).subscribe((response:any)=>{
      let result:any=this.utils.decrypt(response['encrypted'],environment.authenticationSecretKey)
      if(result['status']=='success'){
       let data:any=result['data']

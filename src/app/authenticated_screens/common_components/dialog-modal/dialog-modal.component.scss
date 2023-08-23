@@ -1,0 +1,66 @@
+:host::ng-deep{
+  .pi {
+    font-size: 1.5rem;
+}
+.p-dialog .p-dialog-header {
+  font-size: 1.5rem;
+  font-family:'sfpro-sb'
+}
+.p-dialog .p-dialog-footer {
+  padding: 1rem;
+}
+.p-dialog-content {
+  overflow-y:inherit ;
+}
+}
+.saveBtn{
+  color: var(--white-clr) !important;
+  padding-inline: 1rem;
+  font-size: 1.2rem;
+  border-radius: 3rem;
+  background-image: linear-gradient(#FF6000, #f14837) !important;
+}
+.saveBtn:hover {
+  .icon{
+  opacity: 1;
+  animation: shake 1s ease-in infinite;
+  }
+}
+.closeBtn{
+  border-radius: 3rem;
+}
+.Formcard{
+  background-color:var(--light-grey);
+  border: 1px solid transparent;
+  padding: 1rem;
+  border-radius: 5px;
+  max-height: 100%;
+  overflow-y: auto;
+  min-height: 150px;
+}
+.errorTextInput{
+  position: absolute;
+      top: 35px;
+      color: red;
+  }
+  .iconStyle{
+    color: var(--app-primary-clr);
+  }
+  .form-control{
+    font-size: 1.4rem;
+  }
+  .input-group{
+    .ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+}
+  .form-control:focus{
+    box-shadow: none;
+  }
+  .input-group-text {
+    background-color: var(--white-clr) !important;
+  }
+  .error{
+    color: red;
+    margin-left: -3px;
+  }

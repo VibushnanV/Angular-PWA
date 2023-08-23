@@ -13,9 +13,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { SignupComponent } from './non-authenticated_screens/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonComponentsModule } from './authenticated_screens/common_components/common-components/common-components.module';
+import { CommonComponentsModule } from './authenticated_screens/common_components/common-components.module';
 
-
+// Firebase Modules
+import {AngularFireModule} from"@angular/fire/compat"
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore"
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +43,10 @@ import { CommonComponentsModule } from './authenticated_screens/common_component
     NgxOtpInputModule,
     BrowserAnimationsModule,
     CommonComponentsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [HttpClient,CookieService],
   bootstrap: [AppComponent],

@@ -5,11 +5,11 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigatorComponent } from './navigator/navigator.component';
-import { CommonComponentsModule } from '../../common_components/common-components/common-components.module';
+import { CommonComponentsModule } from '../../common_components/common-components.module';
 import { RouterModule } from '@angular/router';
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
-
+import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -20,12 +20,16 @@ import { defineElement } from 'lord-icon-element';
     CommonModule,
     RouterModule,
     HomeRoutingModule,
-    CommonComponentsModule
+    CommonComponentsModule,
+    DynamicDialogModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers:[DialogService,]
 })
 export class HomeModule {
   constructor() {
     defineElement(lottie.loadAnimation);
+
   }
+
  }

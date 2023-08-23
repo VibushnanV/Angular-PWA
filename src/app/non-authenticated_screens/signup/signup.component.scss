@@ -91,14 +91,9 @@ position: absolute;
     top: 35px;
     color: red;
 }
-@keyframes shake {
-  0%{
-   transform: translateX(-2px);
-  }
-  50%{
-    transform: translateX(2px);
-  }
-  100%{
-    transform: translateX(-2px);
-  }
+.input-group{
+  .ng-touched.ng-invalid{
+  border: 1px solid red;
 }
+}
+

@@ -5,6 +5,7 @@ import moment from 'moment';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { ApiserviceService } from 'src/services/apiservice.service';
+import { FirebaseService } from 'src/services/firebase.service';
 import { UtilsService } from 'src/services/utils.service';
 
 @Component({
@@ -20,14 +21,19 @@ loginForm=new FormGroup({
 })
 showPassword: boolean = false;
 sendRequest:boolean=false
+queryService:any
   constructor(
     private cookie: CookieService,
     private apis:ApiserviceService,
     private utils:UtilsService,
-    private router:Router
+    private router:Router,
+    private fs:FirebaseService
   ) { }
 
   ngOnInit(): void {
+    this.queryService = environment.isHttpService
+    ? this.apis
+    : this.fs;
     try {
       let cookieDetails: any = this.cookie.get(`userdetails`);
       cookieDetails = this.utils.decrypt(
@@ -55,7 +61,7 @@ sendRequest:boolean=false
      const { email, password } = values
      let requestBody:any = { email, password }
     params['body']['encrypted'] =this.utils.encrypt(requestBody,environment.authenticationSecretKey)
-    this.apis.userAuthentication(params).subscribe((response:any)=>{
+    this.queryService.userAuthentication(params).subscribe((response:any)=>{
      let result:any=this.utils.decrypt(response['encrypted'],environment.authenticationSecretKey)
      if(result['status']=='success'){
      let loginDetails:any=result['data'][0]
@@ -64,7 +70,7 @@ sendRequest:boolean=false
       body:
         {"collection":"Authorization"}
      }
-    this.apis.getData(params).subscribe((response:any)=>{
+    this.queryService.getData(params).subscribe((response:any)=>{
       if(response['status']=='success'){
         let details:any=this.utils.encrypt(response['data'],environment.dataSeceretKey)
        localStorage.setItem('Auth_list',details)

@@ -30,10 +30,10 @@
 
 }
 .activeTab{
-  background-color: #383736;
+  background-color: var(--sideBarActive-Clr);
   border-radius: 0.8rem;
   color: var(--white-clr);
-  border-right:10px solid (var(--app-primary-clr));
+  border-right:5px solid (var(--app-primary-clr));
   .icons{
     color: var(--white-clr);
   }

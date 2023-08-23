@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ApiserviceService } from 'src/services/apiservice.service';
+import { FirebaseService } from 'src/services/firebase.service';
 import { UtilsService } from 'src/services/utils.service';
 
 @Component({
@@ -46,13 +47,18 @@ export class SignupComponent implements OnInit {
 sendRequest:boolean=false
 formValues=new FormGroup({
 })
+queryService:any
   constructor(
     private apis:ApiserviceService,
     private utils:UtilsService,
-    private router:Router
+    private router:Router,
+    private fs:FirebaseService
   ) { }
 
   ngOnInit(): void {
+    this.queryService = environment.isHttpService
+    ? this.apis
+    : this.fs;
     this.formValues=new FormGroup({
     })
     for(let form of this.signupForm){
@@ -70,7 +76,7 @@ formValues=new FormGroup({
       let requestBody:any ={...values}
       delete requestBody['confirmPassword']
     params['body']['encrypted'] =this.utils.encrypt(requestBody,environment.authenticationSecretKey)
-    this.apis.userAuthentication(params).subscribe((response:any)=>{
+    this.queryService.userAuthentication(params).subscribe((response:any)=>{
      let result:any=this.utils.decrypt(response['encrypted'],environment.authenticationSecretKey)
      if(result['status']=='success'){
       this.router.navigate(['/login'])

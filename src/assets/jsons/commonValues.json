@@ -1,0 +1,40 @@
+{
+  "modalConfigJson":{
+    "header":"",
+    "footer":{},
+    "content":{},
+    "draggable":true,
+    "resizable":true,
+    "visible":false,
+    "modal":false,
+    "position":"center",
+    "blockScroll":true,
+    "dismissableMask":true,
+    "maximizable":true,
+    "breakpoints":null,
+    "keepInViewport":false,
+    "transitionOptions":"150ms cubic-bezier(0, 0, 0.2, 1)",
+    "style":"",
+    "minY":20,
+    "minX":20
+  },
+  "dropdownConfigJson":{
+    "list":[],
+    "optionLabel":"",
+    "optionValue":"",
+    "selectedValue":{},
+    "disableKey":"",
+    "Isrequired":false,
+    "IsDisable":false,
+    "showClear":true,
+    "placeholder":"Select an item",
+    "filter":true,
+    "filterBy":"",
+    "filterPlaceholder":"Search here...",
+    "resetFilterOnHide":true,
+    "filterMatchMode":"contains",
+    "tooltip":null,
+    "tooltipPosition":"top",
+    "tooltipStyleClass":null
+  }
+}

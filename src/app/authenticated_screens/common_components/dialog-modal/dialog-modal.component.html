@@ -1,0 +1,180 @@
+<p-dialog  [(visible)]="modalContent.visible" [modal]="modalContent.modal" [style]="modalContent.style" [maximizable]="modalContent.maximizable"
+    [draggable]="modalContent.draggable"  [resizable]="modalContent.resizable"
+    [position]="modalContent.position"
+    (onHide)="modalClosed()">
+    <ng-template pTemplate="header">
+    {{modalContent.header}}
+  </ng-template>
+  <ng-container *ngIf="data['type']=='form'">
+    <div class="Formcard">
+      <form [formGroup]="formvalues">
+        <div class="formContainer d-flex justify-content-start align-items-center flex-wrap gap-3">
+      <ng-container *ngFor="let form of data['formFields']">
+          <div style="width: max-content;margin-right: 1%;">
+            <ng-container *ngIf="!form.disable">
+              <label class="labels d-block  f-12">{{form.label}}
+                <span *ngIf = "form.mandatory" class="error">*</span>
+              </label>
+              <ng-container *ngIf="form.type=='input'">
+                <div class="input-group input-group-lg position-relative">
+                  <input type="text" class="form-control"
+                  [formControlName]="form.formControlName" [placeholder]="form.placeholder??''" >
+                  <span class="input-group-text" id="basic-addon2">
+                    <i class="iconStyle f-15" [ngClass]="form.icon" aria-hidden="true"></i>
+                  </span>
+                  <ng-container *ngIf="
+                formvalues.get(form.formControlName)?.touched && formvalues.get(form.formControlName)?.invalid
+              " class="errorTextInput">
+                <div *ngIf="formvalues.get(form.formControlName)?.errors?.['required']" class="errorTextInput">
+                  {{form.label}} is required.
+                </div>
+              </ng-container>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="form.type=='otp'">
+
+              </ng-container>
+              <ng-container *ngIf="form.type=='password'">
+                <div class="input-group input-group-lg position-relative">
+                  <input  [type]="showPassword?'text':'password'" class="form-control"
+                  [formControlName]="form.formControlName" [placeholder]="form.placeholder??''">
+                  <span class="input-group-text" id="basic-addon2">
+                    <i class="iconStyle f-20" aria-hidden="true"
+                    style="cursor: pointer;"
+                    [ngClass]="showPassword?'fa fa-unlock-alt':'fa fa-lock'"
+                    (click)="showPassword=!showPassword"></i>
+                  </span>
+                  <ng-container
+                  *ngIf="
+                  formvalues.get(form.formControlName)?.touched &&
+                  formvalues.get(form.formControlName)?.invalid">
+                  <div
+                    *ngIf="formvalues.get(form.formControlName)?.errors?.['required']"
+                    class="errorTextInput">
+                  Password  is required.
+                  </div>
+                  <div
+                    *ngIf="formvalues.get(form.formControlName)?.errors?.['minlength']"
+                    class="errorTextInput">
+                    Minimum
+                    {{formvalues.get(form.formControlName)?.errors?.['minlength'].requiredLength}}
+                    Characters required
+                  </div>
+                  <div
+                    *ngIf="formvalues.get(form.formControlName)?.errors?.['maxlength']"
+                    class="errorTextInput">
+                    Maximum
+                    {{formvalues.get(form.formControlName)?.errors?.['maxlength'].requiredLength}}
+                    Characters required
+                  </div>
+                </ng-container>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="form.type=='number'">
+                <div class="input-group input-group-lg position-relative">
+                  <input type="number" class="form-control"
+                  [formControlName]="form.formControlName" [placeholder]="form.placeholder??''" >
+                  <span class="input-group-text" id="basic-addon2">
+                    <i class="iconStyle f-15" [ngClass]="form.icon" aria-hidden="true"></i>
+                  </span>
+                  <ng-container *ngIf="
+                formvalues.get(form.formControlName)?.touched && formvalues.get(form.formControlName)?.invalid
+              " class="errorTextInput">
+                <div *ngIf="formvalues.get(form.formControlName)?.errors?.['required']" class="errorTextInput">
+                  {{form.label}} is required.
+                </div>
+              </ng-container>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="form.type=='email'">
+                <div class="input-group input-group-lg position-relative">
+                  <input type="text" class="form-control"
+                  [formControlName]="form.formControlName" [placeholder]="form.placeholder??''">
+                  <span class="input-group-text" id="basic-addon2">
+                    <i class="fa fa-envelope iconStyle f-15"  aria-hidden="true"></i>
+                  </span>
+                  <ng-container
+                  *ngIf="
+                  formvalues.get(form.formControlName)?.touched &&
+                  formvalues.get(form.formControlName)?.invalid
+                  ">
+                  <div
+                    *ngIf="formvalues.get(form.formControlName)?.errors?.['required']"
+                    class="errorTextInput">
+                  Email is required.
+                  </div>
+                  <div
+                    *ngIf="formvalues.get(form.formControlName)?.errors?.['email']"
+                    class="errorTextInput">
+                     Invalid Email
+                  </div>
+                </ng-container>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="form.type=='timePicker'">
+                <input type="time" class="form-control"
+                class="w-100"
+                [formControlName]="form.formControlName"  min="00:00" max="23:59" />
+                <ng-container *ngIf="
+                formvalues.get(form.formControlName)?.touched && formvalues.get(form.formControlName)?.invalid
+              " class="errorTextInput">
+                <div *ngIf="formvalues.get(form.formControlName)?.errors?.['required']" class="errorTextInput">
+                  {{form.label}} is required.
+                </div>
+              </ng-container>
+              </ng-container>
+            </ng-container>
+            </div>
+      </ng-container>
+    </div>
+      </form>
+  </div>
+  </ng-container>
+
+
+
+        <ng-template pTemplate="footer">
+          <ng-container *ngIf="modalContent.footer['enable']">
+            <div>
+                <ng-container *ngIf="modalContent.footer.buttonTabs && modalContent.footer.buttonTabs.length">
+                    <ng-container *ngFor="let tab of modalContent.footer.buttonTabs">
+                        <ng-container *ngIf="tab.type=='submit'">
+                            <button type="submit" class="btn btn-md saveBtn" style="margin-right: 1%;"
+                            [disabled]="!formvalues.valid"
+                    (click)="sendForm(tab.type,formvalues)">
+                            <ng-container *ngIf="tab.icon">
+                              <i [ngClass]="tab.icon" style="margin-right: 5px;" class="f-14 icon"></i>
+                            </ng-container>
+                            <ng-container *ngIf="!tab.icon">
+                            <i class="fa fa-save f-14 icon" style="margin-right: 5px;"></i>
+                            </ng-container>
+                            {{tab.text}}</button>
+                        </ng-container>
+                        <ng-container *ngIf="tab.type=='text'">
+                          <ng-container *ngIf="tab.textType=='button'">
+                          <button type="submit" class="btn btn-md saveBtn" style="margin-right: 1%;"
+                      (click)="sendForm(tab.text)">
+                          <ng-container *ngIf="tab.icon">
+                            <i [ngClass]="tab.icon" style="margin-right: 5px;" class="f-14 icon"></i>
+                          </ng-container>
+                          {{tab.text}}</button>
+                        </ng-container>
+                        <ng-container *ngIf="tab.textType=='plainText'">
+                          <button type="submit" class="btn btn-md saveBtn" style="margin-right: 1%;"
+                           (click)="sendForm(tab.text)">
+                          <ng-container *ngIf="tab.icon">
+                            <i [ngClass]="tab.icon" style="margin-right: 5px;" class="f-14 icon"></i>
+                          </ng-container>
+                          {{tab.text}}</button>
+                        </ng-container>
+                      </ng-container>
+                        <ng-container *ngIf="tab.type=='close'">
+                            <button type="button" class="btn btn-md closeBtn
+                            btn-outline-danger" (click)="closeModal()">{{tab.text}}</button>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </ng-container>
+        </ng-template>
+</p-dialog>

@@ -95,3 +95,8 @@
     justify-content: center !important;
 }
   }
+  .input-group{
+    .ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+}

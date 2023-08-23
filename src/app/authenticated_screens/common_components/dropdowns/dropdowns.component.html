@@ -1,0 +1,15 @@
+<form [formGroup]="form">
+  <p-dropdown [options]="cities"  [optionLabel]="optionLabel"
+  [optionValue]="optionValue" [optionDisabled]="disableKey"
+  [required]="required"
+  [disabled]="disabled"
+  [placeholder]="placeholder"
+  [showClear]="showClear"
+  [filter]="filter"
+  [filterBy]="filterBy"
+  [filterPlaceholder]="filterPlaceholder"
+  [resetFilterOnHide]="resetFilterOnHide"
+  [filterMatchMode]="filterMatchMode"
+  formControlName="selectedValue"></p-dropdown>
+</form>
+
