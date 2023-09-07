@@ -21,12 +21,15 @@ import {AngularFirestoreModule} from "@angular/fire/compat/firestore"
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
+import { SwUpdateService } from 'src/services/sw-update.service';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ForgotComponent,
     SignupComponent,
+    SplashScreenComponent,
   ],
   imports: [
     BrowserModule,

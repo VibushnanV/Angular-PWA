@@ -36,5 +36,15 @@
     "tooltip":null,
     "tooltipPosition":"top",
     "tooltipStyleClass":null
+  },
+  "toastConfigJon":{
+     "severity":"success",
+     "summary":"",
+     "detail":"",
+     "key":"top-right",
+     "life":2000,
+     "closable":true,
+     "sticky":false,
+     "buttonTabs":[]
   }
 }

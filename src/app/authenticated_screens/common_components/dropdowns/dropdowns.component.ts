@@ -15,14 +15,14 @@ export class DropdownsComponent implements OnInit {
   optionValue:any
   selectedValue:any
   disableKey:any
-  required:boolean=false
-  disabled:boolean=false
-  showClear:boolean=true
-  filter:boolean=true
+  required=false
+  disabled=false
+  showClear=true
+  filter=true
   placeholder:any
   filterPlaceholder:any
   filterBy:any
-  resetFilterOnHide:boolean=false
+  resetFilterOnHide=false
   filterMatchMode:any
 @Input('dropdowndata')
 set in (value:any){
@@ -50,13 +50,13 @@ set in (value:any){
   this.filterMatchMode=value['filterMatchMode']
 }
   constructor() {
-    this.cities = [
-      {name: 'New York', code: 'NY'},
-      {name: 'Rome', code: 'RM'},
-      {name: 'London', code: 'LDN'},
-      {name: 'Istanbul', code: 'IST'},
-      {name: 'Paris', code: 'PRS'}
-  ];
+  //   this.cities = [
+  //     {name: 'New York', code: 'NY'},
+  //     {name: 'Rome', code: 'RM'},
+  //     {name: 'London', code: 'LDN'},
+  //     {name: 'Istanbul', code: 'IST'},
+  //     {name: 'Paris', code: 'PRS'}
+  // ];
   this.selectedCityCode=this.cities[3]
   console.log(this.selectedCityCode)
   this.form.get('selectedValue')?.setValue(this.selectedCityCode['code'])

@@ -6,8 +6,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { ApiserviceService } from 'src/services/apiservice.service';
 import { FirebaseService } from 'src/services/firebase.service';
+import { SwMessageService } from 'src/services/sw-message.service';
 import { UtilsService } from 'src/services/utils.service';
-
+import commonValues from '../../..../../../assets/jsons/commonValues.json'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,12 +23,14 @@ loginForm=new FormGroup({
 showPassword: boolean = false;
 sendRequest:boolean=false
 queryService:any
+messageContent=commonValues['toastConfigJon']
   constructor(
     private cookie: CookieService,
     private apis:ApiserviceService,
     private utils:UtilsService,
     private router:Router,
-    private fs:FirebaseService
+    private fs:FirebaseService,
+    private swPushService:SwMessageService
   ) { }
 
   ngOnInit(): void {
@@ -75,6 +78,31 @@ queryService:any
         let details:any=this.utils.encrypt(response['data'],environment.dataSeceretKey)
        localStorage.setItem('Auth_list',details)
        loginDetails['isActive'] = true;
+      //  let params:any={
+      //   endPoint:'api/getData',
+      //   body:
+      //     {"collection":"Push_Subscriptions",queryParam:{email:email}
+      //   }
+      //  }
+      // this.queryService.getData(params).subscribe((pushResponse:any)=>{
+      //   if(pushResponse['status']=='success'){
+      //       if(pushResponse['data'].length){
+      //         loginDetails['subscriptionObject']=pushResponse['data'][0]
+      //       }
+      //       else{
+      //         this.messageContent['summary']='customTemplate'
+      //         this.messageContent['key']='customTemplate'
+      //         this.messageContent['life']=0
+      //         this.messageContent['sticky']=true
+      //             this.utils.enableMessageService(this.messageContent)
+      //       this.swPushService.handleNotifications()
+      //       }
+      //   }
+      //   else{
+      //   }
+      // },(err:any)=>{
+      //   console.log(err)
+      // })
        loginDetails = this.utils.encrypt(
          loginDetails,
          environment.dataSeceretKey,

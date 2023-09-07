@@ -22,4 +22,7 @@ export class ApiserviceService {
   getData(params:any){
     return this.http.post(`${this.localUrl}/${params.endPoint}`,params.body,this.httpHeaders)
  }
+ insertData(params:any){
+  return this.http.post(`${this.localUrl}/${params.endPoint}`,params.body,this.httpHeaders)
+}
 }

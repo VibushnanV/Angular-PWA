@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UtilsService {
   collapseSideNav$: BehaviorSubject<any> = new BehaviorSubject(true);
+  toastMessageContent$: BehaviorSubject<any> = new BehaviorSubject({});
   constructor() { }
   encrypt(value : any,key:any){
     try{
@@ -56,5 +57,11 @@ export class UtilsService {
       resolve(list)
   })
 
+  }
+  enableMessageService(data:any){
+    this.toastMessageContent$.next(data)
+  }
+  getMessageContent(){
+   return this.toastMessageContent$.asObservable()
   }
 }

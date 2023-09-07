@@ -48,6 +48,7 @@ sendRequest:boolean=false
 formValues=new FormGroup({
 })
 queryService:any
+roles:any[]=[]
   constructor(
     private apis:ApiserviceService,
     private utils:UtilsService,
@@ -61,9 +62,22 @@ queryService:any
     : this.fs;
     this.formValues=new FormGroup({
     })
+
     for(let form of this.signupForm){
       this.formValues.addControl(form.formControlName,form.controlFields)
     }
+  }
+  getRoles(){
+    let params:any={
+      endPoint:'api/getData',
+      body:
+        {"collection":"Roles"}
+     }
+    this.queryService.getData(params).subscribe((response:any)=>{
+      if(response['status']=='success'){
+
+      }
+    })
   }
   signup(formData:any){
     let values:any=formData.value

@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="forgotContainer">
-    <div class="forgotCard animate__animated animate__jackInTheBox">
+    <div class="forgotCard animate__animated animate__backInLeft">
          <div class="Icon_with_text">
           <i class="fa fa-question-circle iconStyle f-30"  aria-hidden="true"></i>
           <div class="d-block">
@@ -11,7 +11,7 @@
          <div class="forgotForm ">
           <ng-container *ngIf="!showOTPField">
             <form [formGroup]="forgotForm" (ngSubmit)="forgot(forgotForm)" style="display: grid;">
-              <div class="formContainer animate__animated animate__jackInTheBox">
+              <div class="formContainer animate__animated animate__backInLeft">
                 <ng-container *ngFor="let form of selectedForm">
                   <ng-container *ngIf="form.type=='email'">
                     <div class="input-group input-group-lg">
@@ -61,7 +61,7 @@
           </ng-container>
           <ng-container *ngIf="showOTPField">
 
-            <div class="optField animate__animated animate__jackInTheBox">
+            <div class="optField animate__animated animate__backInLeft">
               <span style="font-family: sfpro-sb;color:#db9f2d" class="f-12">OTP sent to {{allFormValues['email']}}</span>
               <span class="resentlink">
                 <i class="fa fa-pencil-square-o f-14" aria-hidden="true" (click)="editEmail()"></i>

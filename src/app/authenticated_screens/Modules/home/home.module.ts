@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
 import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -24,7 +25,7 @@ import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
     DynamicDialogModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers:[DialogService,]
+  providers:[DialogService,MessageService]
 })
 export class HomeModule {
   constructor() {

@@ -1,0 +1,28 @@
+
+<p-toast key="top-right" position="top-right"></p-toast>
+
+
+<p-toast position="center" key="customTemplate" (onClose)="onClose()" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+      <div class="flex flex-column" style="flex: 1">
+          <div class="text-center">
+              <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+              <h4>{{message.summary}}</h4>
+              <p>{{message.detail}}</p>
+          </div>
+          <div class="grid">
+            <ng-container *ngFor="let tab of buttonTabs">
+              <ng-container *ngIf="tab.type=='save'">
+              <button type="submit" class="btn btn-md saveBtn" style="margin-right: 1%;"
+              (click)="onConfirm(tab)">
+              {{tab.text}}</button>
+            </ng-container>
+              <ng-container *ngIf="tab.type=='close'">
+              <button type="button" class="btn btn-md closeBtn
+              btn-outline-danger" (click)="onClose(tab)">{{tab.text}}</button>
+            </ng-container>
+        </ng-container>
+          </div>
+      </div>
+  </ng-template>
+</p-toast>

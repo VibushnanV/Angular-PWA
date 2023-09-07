@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "localSw": "ng build --prod && http-server -c-1 -p 8000 dist/tracker-pwa"
   },
   "private": true,
   "dependencies": {
