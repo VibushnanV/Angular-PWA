@@ -12,7 +12,7 @@ export class ToasterComponent implements OnInit {
   @Output()sendToastResult=new EventEmitter()
   @Input('toasterData')
   set in (value:any){
-   if(value.key=='top-right'){
+   if(value.key=='default'){
     this.messageService.add(value)
    }
    else if(value.key=='customTemplate'){

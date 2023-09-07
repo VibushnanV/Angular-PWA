@@ -25,4 +25,7 @@ export class ApiserviceService {
  insertData(params:any){
   return this.http.post(`${this.localUrl}/${params.endPoint}`,params.body,this.httpHeaders)
 }
+sendNotification(params:any){
+  return this.http.post(`${this.localUrl}/${params.endPoint}`,params.body,this.httpHeaders)
+}
 }

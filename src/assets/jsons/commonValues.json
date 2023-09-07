@@ -41,7 +41,7 @@
      "severity":"success",
      "summary":"",
      "detail":"",
-     "key":"top-right",
+     "key":"default",
      "life":2000,
      "closable":true,
      "sticky":false,

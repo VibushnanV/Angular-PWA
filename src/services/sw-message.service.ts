@@ -28,15 +28,15 @@ userDetails:any
     }
   }
 subscribePushNotification(){
+  if(this.pushService.isEnabled){
     this.pushService.requestSubscription(
       {serverPublicKey:environment.PUBLIC_VAPID_KEY}
-    ).then((subscription:any)=>{
-      console.log(subscription,'subscription')
-      subscription['email']=this.userDetails['email']
+    ).then((sub:any)=>{
+      let details={email:this.userDetails['email']}
       let params:any={
-        endPoint:'api/insertData',
+        endPoint:'api/addSubscribers',
         body:
-          {"collection":"Push_Subscriptions",data:subscription
+          {"collection":"Push_Subscriptions",subscription:sub,details:details
         }
        }
       this.queryService.insertData(params).subscribe((response:any)=>{
@@ -48,5 +48,10 @@ subscribePushNotification(){
     }).catch((err)=>{
       console.log(`subscribtion failed ,${err}`)
     })
+  }
+  else{
+    console.log("swPush service:Service worker is not enabled")
+  }
+
   }
 }

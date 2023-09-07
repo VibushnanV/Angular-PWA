@@ -11,12 +11,14 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import { DropdownsComponent } from './dropdowns/dropdowns.component';
 import {ToastModule} from 'primeng/toast';
 import { ToasterComponent } from './toaster/toaster.component';
+import { TableComponent } from './table/table.component';
 @NgModule({
   declarations: [
     OtpInputComponent,
     DialogModalComponent,
     DropdownsComponent,
-    ToasterComponent
+    ToasterComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
