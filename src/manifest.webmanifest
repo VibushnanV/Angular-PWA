@@ -1,8 +1,8 @@
 {
-  "name": "tracker-pwa",
-  "short_name": "tracker-pwa",
-  "theme_color": "#FF6000",
-  "background_color": "#FF6000",
+  "name": "Tracker-PWA",
+  "short_name": "Tracker",
+  "theme_color": "#f1eeed",
+  "background_color": "red",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-messageContent=commonValues['toastConfigJon']
+messageContent={...commonValues['toastConfigJon']}
 queryService:any
 userDetails:any
   constructor(private utils:UtilsService,
@@ -27,14 +27,6 @@ userDetails:any
     this.utils.getLocalstorgaeData('userdetails',environment.dataSeceretKey).then((result:any)=>{
       this.userDetails=result
     })
-    this.messageContent['summary']='customTemplate'
-    this.messageContent['detail']='successfully created Pwa with push service'
-    this.messageContent['key']='default'
-    this.messageContent['life']=0
-    this.messageContent['sticky']=true
-    this.messageContent['severity']='success'
-        this.utils.enableMessageService(this.messageContent)
-        console.log(navigator.userAgent)
   }
   sendNotification(){
   let params:any={

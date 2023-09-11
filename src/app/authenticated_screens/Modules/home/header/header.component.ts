@@ -6,15 +6,17 @@ import  commonValues from '../../../../../assets/jsons/commonValues.json'
 import { FormControl, Validators } from '@angular/forms';
 import { ApiserviceService } from 'src/services/apiservice.service';
 import { FirebaseService } from 'src/services/firebase.service';
+import { SwMessageService } from 'src/services/sw-message.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+
 })
 export class HeaderComponent implements OnInit {
   isOpened:boolean=true
   constructor(private utils:UtilsService,private router:Router,
-    private apis:ApiserviceService,private fs:FirebaseService
+    private apis:ApiserviceService,private fs:FirebaseService,private swPushService:SwMessageService
    ) {
     this.utils.getLocalstorgaeData('userdetails',environment.dataSeceretKey).then((result:any)=>{
       this.userDetails=result
@@ -48,6 +50,8 @@ export class HeaderComponent implements OnInit {
     mandatory: true,
   }]
   queryService:any
+  isSubscribed = false;
+  messageContent={...commonValues['toastConfigJon']}
   ngOnInit(): void {
     this.queryService = environment.isHttpService
     ? this.apis
@@ -64,6 +68,10 @@ export class HeaderComponent implements OnInit {
       ,
       version:'Version 1.0'
     }
+    this.swPushService.checkSubscriptionStatus().then((result:any)=>{
+      this.isSubscribed=result['status']
+    })
+
   }
   toogleSidebar(){
    this.isOpened=!this.isOpened
@@ -129,5 +137,39 @@ else if(event['type']=='submit'){
     },(err:any)=>{
       console.log(err)
     })
+  }
+  manageSubscription(){
+    if(this.isSubscribed){
+      this.swPushService.unsubscribePushNotification().then((result:any)=>{
+        if(result['status']){
+          this.isSubscribed=!this.isSubscribed
+          this.messageContent['summary']='Success'
+          this.messageContent['detail']=`${result['message']}`
+              this.utils.enableMessageService(this.messageContent)
+        }
+        else{
+          this.messageContent['summary']='Failed'
+          this.messageContent['detail']='Somthing went wrong try again'
+          this.messageContent['severity']='error'
+              this.utils.enableMessageService(this.messageContent)
+        }
+      })
+    }
+    else{
+      this.swPushService.subscribePushNotification().then((result:any)=>{
+        if(result['status']){
+          this.isSubscribed=!this.isSubscribed
+          this.messageContent['summary']='Success'
+          this.messageContent['detail']=`${result['message']}`
+              this.utils.enableMessageService(this.messageContent)
+        }
+        else{
+          this.messageContent['summary']='Failed'
+          this.messageContent['detail']=`${result['message']}`
+          this.messageContent['severity']='error'
+              this.utils.enableMessageService(this.messageContent)
+        }
+      })
+    }
   }
 }

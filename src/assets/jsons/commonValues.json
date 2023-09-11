@@ -44,7 +44,6 @@
      "key":"default",
      "life":2000,
      "closable":true,
-     "sticky":false,
-     "buttonTabs":[]
+     "sticky":false
   }
 }

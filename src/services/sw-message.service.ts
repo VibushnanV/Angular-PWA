@@ -21,13 +21,50 @@ userDetails:any
     ? this.apis
     : this.fs;
     if(pushService.isEnabled){
+      // this.checkSubscriptionStatus()
       // this.subscribePushNotification()
     }
     else{
       console.log("swPush service:Service worker is not enabled")
     }
   }
+  checkSubscriptionStatus() {
+    return new Promise((resolve,reject)=>{
+      if(this.pushService.isEnabled){
+      this.pushService.subscription.subscribe((respose:any)=>{
+        console.log(respose,'subscription status')
+        if(!respose){
+         resolve({status:false,sub:null})
+        }
+        else{
+          resolve({status:true,sub:respose})
+        }
+      })
+    }
+    else{
+      resolve({status:false,sub:'Service worker is not enabled'})
+    }
+    })
+  }
+  unsubscribePushNotification(){
+    return new Promise((resolve,reject)=>{
+      if(this.pushService.isEnabled){
+        this.pushService.unsubscribe().then((result:any)=>{
+         console.log(result,'unsubscribed')
+         resolve({status:true,message:result})
+        }).catch((err)=>{
+         console.log(err,'unsubscribed err')
+         resolve({status:false,message:err})
+        })
+       }
+       else{
+         resolve({status:false,message:'Service worker is not enabled'})
+       }
+    })
+  }
+
 subscribePushNotification(){
+  return new Promise((resolve,reject)=>{
   if(this.pushService.isEnabled){
     this.pushService.requestSubscription(
       {serverPublicKey:environment.PUBLIC_VAPID_KEY}
@@ -40,18 +77,21 @@ subscribePushNotification(){
         }
        }
       this.queryService.insertData(params).subscribe((response:any)=>{
-
+        resolve({status:true,message:'Push notification subscribed'})
       },(err:any)=>{
-        console.log(err)
+        resolve({status:false,message:'Push notification subscription failed'})
       })
 
     }).catch((err)=>{
       console.log(`subscribtion failed ,${err}`)
+      resolve({status:false,message:'Push notification subscription failed'})
     })
   }
   else{
     console.log("swPush service:Service worker is not enabled")
+    resolve({status:false,message:'Push notification subscription failed'})
+  }
+})
   }
 
-  }
 }
