@@ -22,7 +22,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
-import { SwUpdateService } from 'src/services/sw-update.service';
+// ngrx store
+import { StoreModule } from '@ngrx/store';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { SwUpdateService } from 'src/services/sw-update.service';
     AngularFirestoreModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
+    StoreModule.forRoot({}),
   ],
   providers: [HttpClient,CookieService],
   bootstrap: [AppComponent],
